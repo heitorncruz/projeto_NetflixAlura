@@ -1,0 +1,264 @@
+* {
+    /* Remove espaçamento padrão dos elementos */
+    margin: 0;
+    /* Remove espaçamento interno padrão dos elementos */
+    padding: 0;
+    /* Inclui padding e border na largura total do elemento */
+    box-sizing: border-box;
+}
+
+/* Variáveis CSS para Tema Escuro */
+html[data-theme="dark"] {
+    /* Cor de fundo escuro */
+    --bg-primary: #0f0f0f;
+    --bg-secondary: #1a1a1a;
+    /* Cores do texto */
+    --text-primary: #ffffff;
+    --text-secondary: #cccccc;
+    /* Cores das bordas */
+    --border-color: #333333;
+    --border-hover: #ffffff22;
+}
+
+/* Variáveis CSS para Tema Claro */
+html[data-theme="light"] {
+    /* Cor de fundo claro */
+    --bg-primary: #f5f5f5;
+    --bg-secondary: #ffffff;
+    /* Cores do texto */
+    --text-primary: #1a1a1a;
+    --text-secondary: #555555;
+    /* Cores das bordas */
+    --border-color: #e0e0e0;
+    --border-hover: #1a1a1a22;
+}
+
+body {
+    /* Define a fonte padrão do site */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* Cria um gradiente de fundo usando variáveis */
+    background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+    /* Define a cor do texto usando variável */
+    color: var(--text-primary);
+    /* Garante que o body ocupe toda a altura da janela */
+    min-height: 100vh;
+    /* Transição suave entre temas */
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+main {
+    margin-top: 5rem;
+    /* Espaçamento interno do topo e da lateral */
+    padding: 40px 20px;
+    /* Limita a largura máxima para melhorar a leitura */
+    max-width: 1200px;
+    /* Centraliza o elemento (margin auto nas laterais) */
+    margin: 0 auto;
+}
+
+/* Header */
+header {            
+    margin-top: 2rem;
+    /* Centraliza o conteúdo horizontalmente */
+    text-align: center;
+    /* Espaço abaixo do header */
+    margin-bottom: 60px;
+    /* Posição relativa para o botão absoluto */
+    position: relative;
+}
+
+/* Botão de Alternância de Tema */
+.theme-toggle {
+    /* Remove estilo padrão do botão */
+    background: none;
+    border: none;
+    /* Cursor de pointer */
+    cursor: pointer;
+    /* Tamanho do botão */
+    font-size: 1.5rem;
+    /* Padding para maior área clicável */
+    padding: 8px;
+    /* Posição fixa no canto superior direito da tela */
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    /* Z-index para ficar acima de outros elementos */
+    z-index: 1000;
+    /* Transição suave */
+    transition: transform 0.3s ease;
+}
+
+.theme-toggle:hover {
+    /* Rotaciona o ícone ao passar o mouse */
+    transform: rotate(20deg) scale(1.1);
+}
+
+header h1 {
+    /* Define o tamanho da fonte | 1rem = 16px, então 3.5rem = 56px */
+    font-size: 3.5rem;
+    /* Define o peso/espessura da fonte (700 = negrito) */
+    font-weight: 700;
+    /* Aumenta o espaço entre as letras */
+    letter-spacing: 2px;
+    /* Adiciona uma sombra ao texto com cor avermelhada */
+    text-shadow: 0 4px 20px rgba(79, 77, 77, 0.158);
+    /* Define a cor do texto usando variável */
+    color: var(--text-primary);
+    /* Espaço abaixo do título */
+    margin-bottom: 20px;
+    /* Transição suave entre temas */
+    transition: color 0.3s ease;
+}
+
+/* Profiles Section */
+.profiles {
+    /* Contexto para os itens internos */
+    margin-top: 50px;
+}
+
+.profiles ul {
+    /* Remove o estilo padrão da lista */
+    list-style: none;
+    /* Habilita o layout em grid (tabela flexível) */
+    display: grid;
+    /* Cria colunas que se adaptam responsivamente, com tamanho fixo para manter juntos */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 200px));
+    /* Espaço reduzido entre os itens do grid para deixá-los mais próximos */
+    gap: 20px;
+    /* Centraliza os itens dentro do grid */
+    justify-items: center;
+    /* Centraliza todo o grid na horizontalmente */
+    justify-content: center;
+}
+
+/* Profile Card */
+.profile {
+    /* Muda o cursor para mão ao passar sobre o elemento */
+    cursor: pointer;
+    /* Suaviza todas as mudanças de propriedade em 0.3s */
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    /* Centraliza o conteúdo horizontalmente */
+    text-align: center;
+}
+
+/* Link do Perfil */
+.perfil {
+    /* Remove o sublinhado padrão dos links */
+    text-decoration: none;
+    /* Define a cor do link como herança (usa a cor padrão) */
+    color: inherit;
+}
+
+.profile:hover {
+    /* Aumenta o tamanho do elemento em 5% ao passar o mouse */
+    transform: scale(1.05);
+}
+
+.profile figure {
+    /* Remove a margem padrão da tag figure */
+    margin: 0;
+    /* Posiciona o elemento de forma relativa para contexto */
+    position: relative;
+    /* Esconde o conteúdo que ultrapassa o limite do elemento */
+    overflow: hidden;
+    /* Arredonda os cantos do elemento */
+    border-radius: 10px;
+}
+
+.profile img {
+    /* Define a largura da imagem */
+    width: 180px;
+    /* Define a altura da imagem */
+    height: 180px;
+    /* Faz a imagem preencher o espaço mantendo a proporção */
+    object-fit: cover;
+    /* Exibe o elemento como bloco (remove espaços em branco) */
+    display: block;
+    /* Arredonda os cantos da imagem */
+    border-radius: 10px;
+    /* Adiciona uma borda usando variável */
+    border: 3px solid var(--border-color);
+    /* Suaviza as mudanças ao passar o mouse */
+    transition: all 0.4s ease;
+    /* Adiciona sombra ao redor da imagem */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.profile:hover img {
+    /* Muda a cor da borda usando variável ao passar o mouse */
+    border-color: var(--border-hover);
+    /* Aumenta o brilho da imagem em 10% */
+    filter: brightness(1.1);
+}
+
+figcaption {
+    /* Espaço acima do texto da legenda */
+    margin-top: 10px;
+    /* Define o tamanho da fonte da legenda */
+    font-size: 1.2rem;
+    /* Define a cor da legenda usando variável */
+    color: var(--text-secondary);
+    /* Transição suave entre temas */
+    transition: color 0.3s ease;
+}
+
+/* Responsividade para tablets (768px ou menos) */
+@media (max-width: 768px) {
+    main {
+        /* Reduz o margin-top para tablets */
+        margin-top: 5rem;
+    }
+    /* Reduz o tamanho do título para telas menores */
+    header h1 {
+        font-size: 2.5rem;
+    }
+
+    /* Ajusta as colunas para telas menores */
+    .profiles ul {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 15px;
+    }
+
+    /* Reduz o tamanho das imagens */
+    .profile img {
+        width: 150px;
+        height: 150px;
+    }
+
+    /* Reduz o padding para screens menores */
+    main {
+        padding: 30px 15px;
+    }
+}
+
+/* Responsividade para celulares (480px ou menos) */
+@media (max-width: 480px) {
+
+    main {
+        /* Reduz o padding para celulares */
+        margin-top: 5rem;
+    }
+
+
+    /* Reduz ainda mais o tamanho do título para celulares */
+    header h1 {
+        font-size: 2rem;
+    }
+
+    /* Ajusta as colunas para celulares */
+    .profiles ul {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 10px;
+    }
+
+    /* Reduz bastante o tamanho das imagens para economizar espaço */
+    .profile img {
+        width: 120px;
+        height: 120px;
+    }
+
+    /* Reduz ao máximo o padding para celulares */
+    main {
+        padding: 20px 10px;
+    }
+}
