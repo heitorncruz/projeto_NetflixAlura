@@ -23,7 +23,8 @@ function carregarPerfil() {
     if (foto) {
         /* Atualiza a foto do perfil na navegação */
         const fotoElement = document.getElementById('perfil-foto');
-        fotoElement.src = foto;
+        // Corrige o caminho relativo (adiciona ../ para voltar um nível de diretório)
+        fotoElement.src = foto.startsWith('http') ? foto : '../' + foto;
         fotoElement.alt = `Foto de perfil de ${perfil}`;
     }
 }
